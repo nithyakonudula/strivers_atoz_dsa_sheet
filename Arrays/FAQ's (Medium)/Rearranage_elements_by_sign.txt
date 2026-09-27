@@ -1,0 +1,35 @@
+class Solution {
+public:
+    vector<int> rearrangeArray(vector<int>& nums) {
+        //two-array / extra-space approach. - TIME COMP - O(n) & SPACE COMP - O(n)
+        vector<int> pos;
+        vector<int> neg;
+        vector<int> ans;
+
+        //storing pos and neg elements in seperate arrays
+        for(int i=0; i<nums.size(); i++){
+            if(nums[i] < 0){
+                neg.push_back(nums[i]);
+            }
+            else{
+                pos.push_back(nums[i]);
+            }
+        }
+
+        //store pos and neg alternatively in ans arrays
+        int p = 0;
+        int n = 0;
+        for(int i=0; i<nums.size(); i++){
+            if(i%2 == 0){
+                ans.push_back(pos[p]);
+                p++;
+            }
+            else{
+                ans.push_back(neg[n]);
+                n++;
+            }
+        }
+        
+        return ans;
+    }
+};

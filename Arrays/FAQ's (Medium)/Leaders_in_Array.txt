@@ -1,0 +1,19 @@
+class Solution {
+public:
+    vector<int> leaders(vector<int>& nums) {
+        //Reverse Traversal / Right-to-Left Traversal with Maximum Tracking.
+        //TimeComp - O(n) , space comp - O(n)
+        int lastElement = nums[nums.size()-1];
+        vector<int> ans;
+        ans.push_back(lastElement);
+
+        for(int i=nums.size()-2; i>=0; i--){
+            if(nums[i] > lastElement){
+                ans.push_back(nums[i]);
+                lastElement = nums[i];
+            }
+        }
+        reverse(ans.begin(), ans.end());
+        return ans;
+    }
+};

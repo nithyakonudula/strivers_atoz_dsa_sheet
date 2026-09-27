@@ -1,0 +1,13 @@
+class Solution {
+public:
+    int pascalTriangleI(int r, int c) {
+        //BRUTE FORCE WITH TIME COMP - O(2^r) , SPACE COMP - O(r);
+        if(r==1 || c==1 || r==c){
+            return 1;
+        }
+        if(c > r){
+            return 0;
+        }
+        return (pascalTriangleI(r-1, c-1) + pascalTriangleI(r-1, c));
+    }
+};
