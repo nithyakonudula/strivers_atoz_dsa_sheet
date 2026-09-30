@@ -1,0 +1,56 @@
+class Solution {
+public:
+    void moveZeroes(vector<int>& nums) {
+        //Time comp - O(n) , space comp - O(1);
+        int j=0;
+        for(int i=0; i<nums.size(); i++){
+            if(nums[i] != 0){
+                nums[j] = nums[i];
+                j++;
+            }
+        }
+        while(j < nums.size()){
+            nums[j] = 0;
+            j++;
+        }
+
+
+
+        
+        /*
+        //Time comp - O(n^2) , space comp - O(1);
+        int count = 0;
+        for(int i=0; i<nums.size(); i++){
+            if(nums[i] == 0){
+                nums.erase(nums.begin() + i);
+                count++;
+                i--;
+            }
+        }
+        for(int i=0; i<count; i++){
+            nums.push_back(0);
+        }
+        */
+
+
+
+        /*
+        //This approach is for function with return method vector<int> 
+        //Time comp - O(n) , Space comp -O(n);
+        vector<int> ans;
+        int count = 0;
+        for(int i=0; i<nums.size(); i++){
+            if(nums[i] != 0){
+                ans.push_back(nums[i]);
+            }
+            else{
+                count++;
+            }
+        }
+        for(int i=0; i<count; i++){
+            ans.push_back(0);
+        }
+        return ans;
+        */
+    }
+};

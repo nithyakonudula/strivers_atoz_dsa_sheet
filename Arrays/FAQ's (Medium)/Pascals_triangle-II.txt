@@ -1,0 +1,21 @@
+class Solution {
+public:
+    vector<int> pascalTriangleII(int r) {
+        //BRUTE FORCE WITH TIME COMP - O(r * 2^r) , SPACE COMP - O(r);
+        vector<int> pascal;
+        for(int i=0; i<r; i++){
+            pascal.push_back(pascalTriangleI(r, i+1));
+        }
+        return pascal;
+    }
+
+    int pascalTriangleI(int r, int c) {
+        if(r==1 || c==1 || r==c){
+            return 1;
+        }
+        if(c > r){
+            return 0;
+        }
+        return (pascalTriangleI(r-1, c-1) + pascalTriangleI(r-1, c));
+    }
+};
