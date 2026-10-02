@@ -1,0 +1,55 @@
+class Solution {
+public:
+    vector<int> getFloorAndCeil(vector<int> nums, int x) {
+        //Time comp - O(logn)
+        //Space comp - O(1)
+
+        int low1 = 0;
+        int high1 = nums.size() - 1;
+
+        int low2 = 0;
+        int high2 = nums.size() - 1;
+
+        int mid1, mid2;
+
+        vector<int> ans;
+
+        // Lower Bound -> first element >= x
+        while (low1 <= high1) {
+            mid1 = (low1 + high1) / 2;
+
+            if (nums[mid1] >= x) {
+                high1 = mid1 - 1;
+            }
+            else {
+                low1 = mid1 + 1;
+            }
+        }
+
+        // Upper Bound -> first element > x
+        while (low2 <= high2) {
+            mid2 = (low2 + high2) / 2;
+
+            if (nums[mid2] <= x) {
+                low2 = mid2 + 1;
+            }
+            else {
+                high2 = mid2 - 1;
+            }
+        }
+
+        // Floor
+        if (low2 - 1 >= 0)
+            ans.push_back(nums[low2 - 1]);
+        else
+            ans.push_back(-1);
+
+        // Ceil
+        if (low1 < nums.size())
+            ans.push_back(nums[low1]);
+        else
+            ans.push_back(-1);
+
+        return ans;
+    }
+};
